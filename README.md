@@ -19,7 +19,7 @@ the minimum length, the number of special characters, the number of digits and t
 curl "http://localhost:8080/password-generator?min_length=20&num_of_special_chars=4&num_of_digits=6&num_of_pass=10"
 ```
 
-#### Dockerized Setup
+### Dockerized Setup
 
 Dockerized setup is much classier than manual setup. To achieve this you just have to do this:-
 
@@ -27,11 +27,22 @@ Dockerized setup is much classier than manual setup. To achieve this you just ha
 docker build -t password-generator-api:latest -f Dockerfile .
 ```
 
-That's it. Now just go and deploy the docker image anywhere you want.
+That's it. Now run the docker image.
 
 ```shell
 docker run -d -p 8080:8080 password-generator-api
 ```
+
+### Kubernetes Setup
+
+- Point kubectl to your test cluster and then run the commands
+
+```shell
+ kubectl apply -f manifests/deployment.yaml -f manifests/service.yaml
+
+ kubectl port-forward svc/password-generator-service 8080:8080
+```
+- Your API server will be listening at port `8080`.
 
 ### Examples
 ```shell
