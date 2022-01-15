@@ -4,7 +4,7 @@
 """
 @project     : password-generator.py
 @date        : 2022-01-15
-@author      : kishor unnirkishnan
+@author      : kishor unnikrishnan
 @description : api that generates secure passwords. as input parameters the user must provide
                the minimum length, the number of special characters, the number of numbers and
                the number of passwords that shall be created. Then generate the passwords 
@@ -16,7 +16,7 @@
 """
 
 # Importing required libraries.
-from flask import Flask, request
+from flask import Flask, request, json
 import secrets
 import string
 import random
@@ -63,6 +63,11 @@ def password_generator():
                                                                 num_of_digits))
         print(generated_passwords)
         return {"password_array": generated_passwords}
+
+
+@app.route('/api/healthcheck', methods=['GET'])
+def api_healthcheck():
+    return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 
 # Run the flask application
