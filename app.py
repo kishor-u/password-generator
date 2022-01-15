@@ -61,6 +61,7 @@ def password_generator():
         for _ in range(num_of_pass):
             generated_passwords.append(generate_secure_password(min_length, num_of_special_chars,
                                                                 num_of_digits))
+        print(generated_passwords)
         return {"password_array": generated_passwords}
 
 
